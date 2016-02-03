@@ -6,6 +6,7 @@ use Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserCreateRequest;
 use App\Utilisateur;
 use Redirect;
 
@@ -58,5 +59,33 @@ class UsersController extends Controller{
             Session::flush();          
         }
         return Redirect::to('/');
+    }
+
+    public function create(){
+        if(!Session::has('ID_User'))
+            return view('users/create');
+        else
+            return Redirect::to('/index');
+    }
+
+    public function create_check(UserCreateRequest $request){
+        if(!Session::has('ID_User')){
+            $login = $request->input('login-username');
+            $pass = password_hash($request->input('login-password'),PASSWORD_DEFAULT);
+            $pass2 = password_hash($request->input('login-password2'),PASSWORD_DEFAULT);
+            $email = $request->input('login-mail');
+
+            $user = new Utilisateur();
+            $result = $user->createUser($login,$pass,$email);
+            if(!empty($result)){
+                Session::put('alert-success', 'Inscription efectuée.');
+                return redirect()->back();
+            }else{
+                //$request->session()->flash('alert-error', 'User was successful added!');
+                return redirect()->back()->withErrors(['error'=>'Erreur lors de la création du compte']);
+            }
+        }else{
+            return Redirect::to('/');
+        }
     }
 }

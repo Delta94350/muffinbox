@@ -28,11 +28,16 @@
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'UsersController@login_form');
+    
 	Route::post('/login/check','UsersController@post_login_form');
 	Route::get('/logout',['uses' => 'UsersController@logout','as'=>'logout']);
+
 	Route::get('/muffinbox', ['uses' => 'IndexController@muffinbox','as'=>'muffinbox']);
 	Route::get('/muffinbox/dirs/{dir}', ['uses' => 'IndexController@muffinbox_dir','as'=>'muffinbox_dir'])->where('dir', '(.*)');
 	Route::get('/muffinbox/dirs/', ['uses' => 'IndexController@muffinbox','as'=>'videos']);
 	Route::get('/muffinbox/files/{file}', ['uses' => 'IndexController@muffinbox_file','as'=>'muffinbox_file'])->where('file', '(.*)');
+
+	Route::get('/user/create','UsersController@create');
+	Route::post('/user/create/check','UsersController@create_check');
 });
 

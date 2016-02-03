@@ -13,4 +13,19 @@ class Utilisateur extends Model{
     	return DB::table($this->table)->where('login', $login_name)->first();
     }
 
+    public function createUser($login,$pass,$email){
+    	try{
+	    	$id = DB::table($this->table)->insertGetId(
+	    			array(
+	    					'email' => $email,
+	    					'login' => $login,
+	    					'password' => $pass
+	    				)
+				);
+	    	return $id;
+    	}catch(\Exception $e){
+    		return null;
+    	}
+    }
+
 }

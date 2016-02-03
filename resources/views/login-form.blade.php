@@ -1,7 +1,10 @@
 @extends('master')
 
+@section('title_tab')
+   Muffinbox -Login
+@stop
 @section('header_name')
-    decibro.fr
+    Muffinbox
 @stop
 
 
@@ -68,8 +71,11 @@
                                             {!!  $errors->first('lol','<div class="tile-wrap"><div class="tile tile-collapse tile-red"><div class="tile-inner"><div class="text-overflow">:message</div></div></div></div>')!!}
                                             <div class="form-group-green form-group-label">
                                                 <div class="row">
+                                                    <?php 
+                                                        $recaptcha = config('recaptcha.public_key');
+                                                    ?>
                                                     <div class="col-md-10 col-md-push-1">
-                                                        <div class="g-recaptcha" data-sitekey="6LeNYwsTAAAAALGEjnpghB6jUpZMcI-pm2WxkgGX" data-size="normal"></div>
+                                                        <div class="g-recaptcha" data-sitekey="{{$recaptcha}}" data-size="normal"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +92,7 @@
                             </div>
                         </div>
                         <div class="clearfix">
-                            <p class="margin-no-top pull-right"><a class="btn btn-flat btn-blue waves-attach">Création de compte</a></p>
+                            <p class="margin-no-top pull-right"><a href="{{URL::to('/user/create')}}" class="btn btn-flat btn-blue waves-attach">Création de compte</a></p>
                         </div>
                     </section>
 @stop

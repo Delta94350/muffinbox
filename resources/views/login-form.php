@@ -1,11 +1,11 @@
 @extends('master')
 
 @section('title_tab')
-   Login
+   Muffinbox -Login
 @stop
 
 @section('header_name')
-    decibro.fr
+    Muffinbox
 @stop
 
 
@@ -71,7 +71,10 @@
                                             <div class="form-group-green form-group-label">
                                                 <div class="row">
                                                     <div class="col-md-10 col-md-push-1">
-                                                        <div class="g-recaptcha" data-sitekey="6LeNYwsTAAAAALGEjnpghB6jUpZMcI-pm2WxkgGX" data-size="normal"></div>
+                                                        <?php 
+                                                            $recaptcha = config('recaptcha.public_key');
+                                                        ?>
+                                                        <div class="g-recaptcha" data-sitekey="{{$recaptcha}}" data-size="normal"></div>
                                                     </div>
                                                 </div>
                                             </div>
