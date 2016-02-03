@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 
 class Utilisateur extends Model{
-    protected $table = 'User';
+    protected $table = 'user';
     public $timestamps = false;
 
     public function getUser($login_name){
