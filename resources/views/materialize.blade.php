@@ -15,11 +15,9 @@
 
     <body>
 
-    
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="{{URL::to('/')}}" class="brand-logo">MuffinBox</a>
+   
+      <div class="navbar-fixed">
+      <nav class="top-nav blue darken-4">
         <ul class="right hide-on-med-and-down">
           <li>
             <form>
@@ -30,15 +28,21 @@
             </form>
           </li>
         </ul>
-      </div>
-    </nav>
-  </div>
+        <a href="@yield('title-url')" class="center brand-logo">@yield('title')</a>
+        <ul id="slide-out" class="side-nav">
+          <li><a href="/logout">Déconnexion</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+      </nav>
+    </div>
+
+  
         
         
       @yield('contenu')
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="{{ URL::to('materialize/js/materialize.min.js') }}"></script>
+      @include('scripts')
       <script type="text/javascript">
         jQuery.expr[':'].Contains = function(a,i,m){
           return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
@@ -59,5 +63,4 @@
           return false;
         });
       </script>
-    </body>
-  </html>
+    @include('footer')

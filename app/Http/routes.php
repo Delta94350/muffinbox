@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/muffinbox/dirs/{dir}', ['uses' => 'IndexController@muffinbox_dir','as'=>'muffinbox_dir'])->where('dir', '(.*)');
 	Route::get('/muffinbox/dirs/', ['uses' => 'IndexController@muffinbox','as'=>'videos']);
 	Route::get('/muffinbox/files/{file}', ['uses' => 'IndexController@muffinbox_file','as'=>'muffinbox_file'])->where('file', '(.*)');
+	Route::get('/muffinbox/files/{file}/html5', ['uses' => 'IndexController@muffinbox_file_html5','as'=>'muffinbox_file_5'])->where('file', '(.*)');
 
 	Route::get('/user/create','UsersController@create');
 	Route::post('/user/create/check','UsersController@create_check');

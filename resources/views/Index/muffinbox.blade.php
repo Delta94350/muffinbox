@@ -1,6 +1,19 @@
 @extends('materialize')
 
+@section('title-url')
+	{{URL::to('/')}}
+@stop 
+@section('title')
+MuffinBox
+@stop
+
+
 @section('contenu')
+<style type="text/css">.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}</style>
 	<div class="container">
 	<ul id="tree" class="collection">
 	<?php
@@ -41,7 +54,7 @@
 							continue;
 						}										
 					}
-					$text = '<li class="collection-item avatar">
+					$text = '<li class="ellipsis collection-item avatar">
 						      <i class="material-icons circle">folder</i>
 						      <a id="caca" href="'.$url_target.'"><span class="title">'.$entry.'</span>
 						      </a><p>'.$file_size.' ko</p>
@@ -76,7 +89,7 @@
 						$con = '<span id="caca2" class="title">'.$entry.'</span>
 						      <p>'.$file_size.' ko</p>';
 					}
-					$text = '<li class="collection-item avatar">
+					$text = '<li class="ellipsis collection-item avatar">
 						      <i class="material-icons circle red">'.$type.'</i>'
 						      .$con.'<a download href="'.$url.'" class="secondary-content"><i class="material-icons">file_download</i></a>
 						    </li>';

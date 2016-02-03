@@ -58,4 +58,17 @@ class IndexController extends Controller{
 			return view('Index/muffinbox_file')->with('path',$path)->with('file',$file);
 		}
 	}
+
+	public function muffinbox_file_html5($file){
+		if(!Session::has('ID_User')){
+			return view('login-form');
+		}else{
+			$path = public_path().DIRECTORY_SEPARATOR.'videos'.DIRECTORY_SEPARATOR.$file;
+			//$dirs = scandir(public_path().DIRECTORY_SEPARATOR.'videos');
+			/*$d = dir($path);
+			$d_root = false;*/
+			return view('Index/muffinbox_file_html5')->with('path',$path)->with('file',$file);
+		}
+	}
+
 }
