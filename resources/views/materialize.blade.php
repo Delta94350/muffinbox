@@ -19,7 +19,7 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="{{URL::to('/')}}" class="brand-logo">Decibro.fr</a>
+        <a href="{{URL::to('/')}}" class="brand-logo">MuffinBox</a>
         <ul class="right hide-on-med-and-down">
           <li>
             <form>

@@ -1,5 +1,9 @@
 # muffinBox
 
+##Prérequis : 
+* PHP >=5.5.30
+* Composer à jour
+
 #Installation :
 
 * cloner le repo
