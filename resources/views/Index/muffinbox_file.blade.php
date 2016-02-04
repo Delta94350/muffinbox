@@ -45,7 +45,7 @@
 		    <div id="html5" class="col s12"><div class="row"></div>
 		    	<div class="card-panel teal lighten-2">Le navigateur Google Chrome est conseillé pour ce player</div><div class="row"></div>
 		    	<div class="video-container">
-		    		<video controls>
+		    		<video width="853" height="480" controls>
 	  					<source src="<?php echo $url; ?>">Your browser does not support the video tag.
 					</video> 
 				</div>
@@ -53,7 +53,7 @@
 	 		</div>
 
 	</div>
-	<div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 150px; right: 24px;">
+	<div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 120px; right: 24px;">
     <a download class="btn-floating btn-large red" href="<?php echo $url; ?>">
       <i class="material-icons prefix">file_download</i>
     </a>
