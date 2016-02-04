@@ -17,7 +17,7 @@
 
 #Installation :
 
-* cloner le repo
+* cloner le repo (renommer le dossier muffinBox en muffinbox)
 * faire un "composer install" à la racine du repo
 * renommer le fichier .env.example en .env
 * creer une base de donnee en utf8 general-ci et importer le script present dans ressources/database
@@ -25,12 +25,5 @@
 * faire un "php artisan key:generate" à la racine du repo
 * modifier le fichier config/recaptcha.php et y mettre la cle privee et publique de son domaine
 * donner les droit de lecture au dossier storage
-
-
-#Formats supportés : 
-* video
-** MP4
-** MKV
-** AC3
-** DTS
-
+* modifier le fichier config/recaptcha.php et y mettre la cle privee de son domaine
+* créer le dossier videos dans public/
