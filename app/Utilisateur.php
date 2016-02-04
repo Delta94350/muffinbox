@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class Utilisateur extends Model{
     protected $table = 'user';
@@ -27,5 +28,29 @@ class Utilisateur extends Model{
     		return null;
     	}
     }
+
+	public function isActive(){
+		if(!Session::has('active')){
+			return false;
+		}else{
+			if(Session::get('active')==1){
+				return true;
+			}
+			return false;
+		}
+	}
+
+	public function isConnected(){
+		if(!Session::has('ID_User'))
+			return false;
+		return true;
+	}
+
+	public function hasRights(){
+		if($this->isActive() && $this->isConnected()){
+			return true;
+		}
+		return false;
+	}
 
 }

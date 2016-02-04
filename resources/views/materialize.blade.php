@@ -30,7 +30,7 @@
         </ul>
         <a href="@yield('title-url')" class="center brand-logo">@yield('title')</a>
         <ul id="slide-out" class="side-nav">
-          <li><a href="/logout">Déconnexion</a></li>
+          <li><a href="{{URL::to('/logout')}}">Déconnexion</a></li>
             </ul>
           </li>
         </ul>
@@ -38,7 +38,7 @@
       </nav>
     </div>
 
-  
+
         
         
       @yield('contenu')

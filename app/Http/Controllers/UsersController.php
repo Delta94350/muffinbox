@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Monolog\Handler\Curl\Util;
 use Session;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Utilisateur;
@@ -13,10 +13,13 @@ use Redirect;
 class UsersController extends Controller{
 
     public function login_form(){
-    	if(!Session::has('ID_User'))
-			return view('login-form');
-        else
+    	//if(!Session::has('ID_User'))
+        $user = new Utilisateur();
+        if($user->isConnected()){
             return Redirect::to('/muffinbox');
+        }else{
+            return view('login-form');
+        }
 	}
 
 	public function post_login_form(LoginRequest $request){
@@ -42,10 +45,18 @@ class UsersController extends Controller{
 		if(password_verify($pass,$result->password)){
 			$ID = $result->ID_User;
             $login = $result->login;
+            $active = $result->active;
     		if(!empty($ID)){
                 Session::put('ID_User', $ID);
                 Session::put('login', $login);
-                return Redirect::to('/muffinbox');
+                Session::put('active',$active);
+                if($user->isActive()){
+                    return Redirect::to('/muffinbox');
+                }else{
+                    //var_dump($user->isActive());
+                    Session::flush();
+                    return redirect()->back()->withErrors(['invalid'=>'Votre compte n\'est pas actif. Veuillez contacter votre administrateur']);
+                }
     		}else{
     			return redirect()->back()->withErrors('invalid','Couple login/mot de passe inconnu')->withInput(Input::except('login-password'));
     		}
