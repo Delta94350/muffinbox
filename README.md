@@ -27,3 +27,15 @@
 * donner les droit de lecture au dossier storage
 * modifier le fichier config/recaptcha.php et y mettre la cle privee de son domaine
 * créer le dossier videos dans public/
+
+
+
+MuffinBox est un projet gratuit et a été fait par plaisir. Cepandant, ceci demande du temps.
+Vous pouvez donc me soutenir en me payant une bière !
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="LCZJFS7D8USG4">
+<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+</form>
