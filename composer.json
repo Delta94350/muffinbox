@@ -4,7 +4,6 @@
     "keywords": ["video", "streaming","explorer","streaming"],
     "license": "MIT",
     "type": "project",
-    "minimum-stability": "stable",
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
