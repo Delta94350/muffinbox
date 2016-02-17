@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "nalmada/muffinbox",
+    "description": "Explorateur de videos en ligne",
+    "keywords": ["video", "streaming","explorer","streaming"],
     "license": "MIT",
     "type": "project",
     "require": {
