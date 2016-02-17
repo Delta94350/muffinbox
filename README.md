@@ -25,7 +25,6 @@
 * faire un "php artisan key:generate" à la racine du repo
 * modifier le fichier config/recaptcha.php et y mettre la cle privee et publique de son domaine
 * donner les droit de lecture au dossier storage
-* modifier le fichier config/recaptcha.php et y mettre la cle privee de son domaine
 * créer le dossier videos dans public/
 
 
