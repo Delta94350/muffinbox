@@ -27,6 +27,43 @@ MuffinBox
 			$ext = explode('.',$filename);
 			return in_array($ext[count($ext)-1], $array);
 		}
+		
+		function fileSizeConvert($bytes) {
+                    $bytes = floatval($bytes);
+                        $arBytes = array(
+                            0 => array(
+                                "UNIT" => "TB",
+                                "VALUE" => pow(1024, 4)
+                            ),
+                            1 => array(
+                                "UNIT" => "GB",
+                                "VALUE" => pow(1024, 3)
+                            ),
+                            2 => array(
+                                "UNIT" => "MB",
+                                "VALUE" => pow(1024, 2)
+                            ),
+                            3 => array(
+                                "UNIT" => "KB",
+                                "VALUE" => 1024
+                            ),
+                            4 => array(
+                                "UNIT" => "B",
+                                "VALUE" => 1
+                            ),
+                        );
+
+                    foreach($arBytes as $arItem)
+                    {
+                        if($bytes >= $arItem["VALUE"])
+                        {
+                            $result = $bytes / $arItem["VALUE"];
+                            $result = str_replace(".", "," , strval(round($result, 2)))." ".$arItem["UNIT"];
+                            break;
+                        }
+                    }
+                    return $result;
+                }
 
 
 		while (false !== ($entry = $dirs->read())) {
@@ -35,7 +72,7 @@ MuffinBox
 			    $latest_ctime = filectime($filepath);//like: 1402783996 that is timestamp so highest is latest.
 			    $latest_filename = $entry;
 			    $file_type = filetype($filepath);//get file type.
-			    $file_size = filesize($filepath);//get file size.
+			    $file_size = fileSizeConvert(filesize($filepath));//get file size.
 
 			    if(is_dir($filepath)){
 				    if(!$d_root){
@@ -57,7 +94,7 @@ MuffinBox
 					$text = '<li class="ellipsis collection-item avatar">
 						      <i class="material-icons circle">folder</i>
 						      <a id="caca" href="'.$url_target.'"><span class="title">'.$entry.'</span>
-						      </a><p>'.$file_size.' ko</p>
+						      </a><p>'.$file_size.'</p>
 						      
 						    </li>';
 				}else{
@@ -84,10 +121,10 @@ MuffinBox
 
 					if($vid){
 						$con = '<a id="caca" href="'.$url_target.'"><span class="title">'.$entry.'</span>
-						      </a><p>'.$file_size.' ko</p>';
+						      </a><p>'.$file_size.'</p>';
 					}else{
 						$con = '<span id="caca2" class="title">'.$entry.'</span>
-						      <p>'.$file_size.' ko</p>';
+						      <p>'.$file_size.'</p>';
 					}
 					$text = '<li class="ellipsis collection-item avatar">
 						      <i class="material-icons circle red">'.$type.'</i>'
